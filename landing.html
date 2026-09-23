@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechFix Pro | Prince Thaddeus</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1e293b;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .hero {
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .services {
+      padding: 80px 8%;
+      background: #1e293b;
+    }
+
+    .services h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #0f172a;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .service-card h3 {
+      color: #38bdf8;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">TechFix Pro</div>
+  </header>
+
+  <section class="hero">
+    <h1>We Fix Your <span>Tech Problems</span></h1>
+    <p>Fast and reliable phone, laptop, and computer repairs. Quality service you can trust.</p>
+    <a href="#contact" class="btn">Get Started</a>
+  </section>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Phone Repair</h3>
+        <p>Screen replacement, battery change, and software fixes for all major brands.</p>
+      </div>
+      <div class="service-card">
+        <h3>Laptop Repair</h3>
+        <p>Hardware upgrades, virus removal, and performance optimization.</p>
+      </div>
+      <div class="service-card">
+        <h3>Data Recovery</h3>
+        <p>Recover lost files from damaged phones, laptops, and storage devices.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 TechFix Pro. Built by Prince Thaddeus</p>
+  </footer>
+
+</body>
+</html>
