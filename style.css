@@ -144,3 +144,16 @@ footer{padding:30px 7%;border-top:1px solid var(--line);color:#66738a;text-align
 .project-links a:hover {
   text-decoration: underline;
 }
+/* Active menu link */
+nav a.active {
+  color: #00b4ff;
+  font-weight: 600;
+}
+
+nav a {
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #00b4ff;
+}
