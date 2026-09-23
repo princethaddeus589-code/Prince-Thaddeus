@@ -51,3 +51,53 @@ footer{padding:30px 7%;border-top:1px solid var(--line);color:#66738a;text-align
     max-width: 280px;
   }
 }
+/* About Section with Photo */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-strengths {
+  margin-top: 30px;
+  display: grid;
+  gap: 12px;
+}
+
+.strength-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 18px;
+  border-radius: 10px;
+}
+
+.strength-item span {
+  color: #00b4ff;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .about-image img {
+    max-width: 250px;
+  }
+}
