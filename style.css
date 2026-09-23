@@ -22,8 +22,7 @@ pre{overflow:auto;color:#dce7ff;font-size:14px}code span{color:#6bc8ff}code b{co
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.cards article{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px}.icon{width:50px;height:50px;display:grid;place-items:center;border-radius:12px;background:rgba(0,160,255,.1);color:var(--cyan);font-weight:950}.cards h3{font-size:23px;margin:20px 0 10px}.cards p{color:var(--muted)}
 .contact{background:linear-gradient(180deg,transparent,rgba(0,110,255,.08))}.contact-buttons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}.contact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:.25s}.contact-card:hover{transform:translateY(-4px);border-color:rgba(0,190,255,.45)}.contact-card small{display:block;color:var(--cyan);font-weight:900;letter-spacing:1.5px}.contact-card strong{display:block;font-size:17px;margin:7px 0}.contact-card span{color:var(--muted);font-size:14px}.whatsapp{border-color:rgba(37,211,102,.22)}
 footer{padding:30px 7%;border-top:1px solid var(--line);color:#66738a;text-align:center;font-size:13px}
-@media(max-width:800px){.header{padding:16px 5%}.menu-btn{display:block}nav{display:none;position:absolute;left:0;right:0;top:68px;background:#070c18;padding:20px 5%;flex-direction:column;gap:20px;border-bottom:1px solid var(--line)}nav.open{display:flex}.hero{grid-template-columns:1fr;padding:70px 5%;gap:45px}.section{padding:75px 5%}.about,.cards,.contact-buttons{grid-template-columns:1fr}h1{font-size:48px}}
-/* ===== Hero Image Styles ===== */
+@media(max-width:800px){.header{padding:16px 5%}.menu-btn{display:block}nav{display:none;position:absolute;left:0;right:0;top:68px;background:#070c18;padding:20px 5%;flex-direction:column;gap:20px;border-bottom:1px solid var(--line)}nav.open{display:flex}.hero{grid-template-columns:1fr;padding:70px 5%;gap:45px}.section{padding:75px 5%}.about,.cards,.contact-buttons{grid-template-columns:1fr}h1{font-size:48px}
 .hero-right {
   display: flex;
   flex-direction: column;
@@ -38,8 +37,6 @@ footer{padding:30px 7%;border-top:1px solid var(--line);color:#66738a;text-align
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
   object-fit: cover;
 }
-
-/* Side by side on bigger screens */
 @media (min-width: 900px) {
   .hero-right {
     flex-direction: row;
@@ -51,7 +48,6 @@ footer{padding:30px 7%;border-top:1px solid var(--line);color:#66738a;text-align
     max-width: 280px;
   }
 }
-/* About Section with Photo */
 .about-container {
   display: flex;
   align-items: center;
@@ -101,7 +97,6 @@ footer{padding:30px 7%;border-top:1px solid var(--line);color:#66738a;text-align
     max-width: 250px;
   }
 }
-/* ===== Projects Section ===== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
