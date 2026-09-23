@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blog and learning journey of Prince Thaddeus - Software Developer">
+  <title>Blog | Prince Thaddeus</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .blog-page {
+      padding: 120px 8% 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .blog-page .tag {
+      color: #00b4ff;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .blog-page h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .blog-page .intro {
+      color: #b0b8c4;
+      margin-bottom: 50px;
+      line-height: 1.7;
+    }
+
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 30px;
+      transition: border-color 0.3s ease;
+    }
+
+    .blog-card:hover {
+      border-color: rgba(0, 180, 255, 0.3);
+    }
+
+    .blog-card .date {
+      color: #00b4ff;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    .blog-card h2 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .blog-card p {
+      color: #b0b8c4;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .blog-card a {
+      color: #00b4ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .blog-card a:hover {
+      text-decoration: underline;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-top: 50px;
+      color: #00b4ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-home:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .blog-page {
+        padding: 100px 5% 60px;
+      }
+      .blog-page h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="header">
+    <a href="index.html" class="logo">PT<span>.</span></a>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="blog-page">
+    <p class="tag">BLOG</p>
+    <h1>My Learning Journey</h1>
+    <p class="intro">
+      Short notes and reflections from my path as a software developer. I share what I’m learning and building.
+    </p>
+
+    <div class="blog-list">
+
+      <!-- Article 1 -->
+      <article class="blog-card">
+        <p class="date">September 2026</p>
+        <h2>How I Built My First Portfolio Website</h2>
+        <p>
+          I started with a simple idea: create a clean personal website that shows who I am and what I can do. 
+          In this post I share the tools I used, the challenges I faced, and what I learned along the way.
+        </p>
+        <a href="#">Read more →</a>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-card">
+        <p class="date">September 2026</p>
+        <h2>Why I Started Learning Web Development</h2>
+        <p>
+          My journey into tech began with curiosity. I wanted to understand how websites work and how I could 
+          build things that people actually use. Here’s the story of how it all started.
+        </p>
+        <a href="#">Read more →</a>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-card">
+        <p class="date">Coming Soon</p>
+        <h2>What I’m Learning Next</h2>
+        <p>
+          I’m currently exploring more JavaScript and planning to build bigger projects. 
+          Stay tuned for updates on my progress and new skills.
+        </p>
+        <a href="#">Coming soon</a>
+      </article>
+
+    </div>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+  </main>
+
+  <footer>
+    <p>© 2026 Prince Thaddeus. Built with code, creativity & continuous learning.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
