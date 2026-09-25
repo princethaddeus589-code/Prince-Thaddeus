@@ -144,7 +144,6 @@ footer{padding:30px 7%;border-top:1px solid var(--line);color:#66738a;text-align
 .project-links a:hover {
   text-decoration: underline;
 }
-/* Active menu link */
 nav a.active {
   color: #00b4ff;
   font-weight: 600;
