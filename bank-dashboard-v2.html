@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thaddeus Bank | Prince Thaddeus</title>
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --card: #111827;
+      --card-hover: #1a2332;
+      --border: #1e293b;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.25);
+      --green: #22c55e;
+      --red: #ef4444;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* Top Navigation */
+    .topbar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .notification {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .notification::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      border: 2px solid var(--card);
+    }
+
+    .user-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg);
+      padding: 6px 12px 6px 6px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Main Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 20px 50px;
+    }
+
+    /* Balance Section */
+    .balance-section {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 800px) {
+      .balance-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .main-balance {
+      background: linear-gradient(145deg, #1e3a5f 0%, #0f172a 100%);
+      border: 1px solid #1e40af;
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-balance::after {
+      content: '';
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%);
+      top: -80px;
+      right: -60px;
+    }
+
+    .account-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .account-label .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .balance-value {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 6px;
+    }
+
+    .balance-change {
+      font-size: 0.9rem;
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 11px 20px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-btn.primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .action-btn.primary:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--primary-glow);
+    }
+
+    .action-btn.ghost {
+      background: rgba(255,255,255,0.06);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .action-btn.ghost:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Side Cards */
+    .side-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      flex: 1;
+    }
+
+    .mini-card h4 {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mini-card .amount {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .mini-card .amount.up { color: var(--green); }
+    .mini-card .amount.down { color: var(--red); }
+
+    .mini-card .sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Quick Stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 700px) {
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .stat:hover {
+      border-color: #334155;
+      background: var(--card-hover);
+    }
+
+    .stat .label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .stat .val {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    /* Transactions */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-header h3 {
+      font-size: 1.15rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      background: var(--card);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .filter-tabs button {
+      padding: 6px 14px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .filter-tabs button.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .tx-list {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .tx-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s ease;
+      cursor: pointer;
+    }
+
+    .tx-item:last-child {
+      border-bottom: none;
+    }
+
+    .tx-item:hover {
+      background: var(--card-hover);
+    }
+
+    .tx-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .tx-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .tx-icon.in {
+      background: rgba(34, 197, 94, 0.12);
+    }
+
+    .tx-icon.out {
+      background: rgba(239, 68, 68, 0.12);
+    }
+
+    .tx-info h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .tx-info p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .tx-right {
+      text-align: right;
+    }
+
+    .tx-amount {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .tx-amount.in { color: var(--green); }
+    .tx-amount.out { color: var(--red); }
+
+    .tx-status {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1e293b;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 100;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-icon">TB</div>
+      Thaddeus Bank
+    </div>
+    <div class="topbar-right">
+      <div class="notification">🔔</div>
+      <div class="user-chip">
+        <div class="avatar">PT</div>
+        <span style="font-size:0.9rem; font-weight:500;">Prince Thaddeus</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Balance + Side -->
+    <div class="balance-section">
+      <div class="main-balance">
+        <div class="account-label">
+          <span class="dot"></span>
+          Available Balance • Premium Account
+        </div>
+        <div class="balance-value">$600,000.00</div>
+        <div class="balance-change">↑ +$12,450.00 this month</div>
+        <div class="action-row">
+          <button class="action-btn primary" onclick="toast('Transfer screen opened')">↑ Send</button>
+          <button class="action-btn ghost" onclick="toast('Deposit initiated')">↓ Receive</button>
+          <button class="action-btn ghost" onclick="toast('Statement ready for download')">📄 Statement</button>
+          <button class="action-btn ghost" onclick="toast('Cards management opened')">💳 Cards</button>
+        </div>
+      </div>
+
+      <div class="side-cards">
+        <div class="mini-card">
+          <h4>Income (2026)</h4>
+          <div class="amount up">+$184,250</div>
+          <div class="sub">12 transactions</div>
+        </div>
+        <div class="mini-card">
+          <h4>Expenses (2026)</h4>
+          <div class="amount down">-$62,480</div>
+          <div class="sub">28 transactions</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat">
+        <div class="label">Savings Rate</div>
+        <div class="val">66%</div>
+      </div>
+      <div class="stat">
+        <div class="label">Active Cards</div>
+        <div class="val">2</div>
+      </div>
+      <div class="stat">
+        <div class="label">Pending</div>
+        <div class="val">$1,240</div>
+      </div>
+      <div class="stat">
+        <div class="label">Credit Limit</div>
+        <div class="val">$50,000</div>
+      </div>
+    </div>
+
+    <!-- Transactions -->
+    <div class="section-header">
+      <h3>Recent Transactions</h3>
+      <div class="filter-tabs">
+        <button class="active" onclick="filterTx('all', this)">All</button>
+        <button onclick="filterTx('in', this)">Income</button>
+        <button onclick="filterTx('out', this)">Expenses</button>
+      </div>
+    </div>
+
+    <div class="tx-list" id="txList">
+      <!-- Injected by JS -->
+    </div>
+
+    <a href="index.html" class="back">← Back to Portfolio</a>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const data = [
+      { type: "in",  title: "Client Payment – Portfolio Project", date: "Sep 22, 2026 • 14:32", amount: "+$4,500.00", status: "Completed", icon: "💼" },
+      { type: "out", title: "Vercel Pro Subscription", date: "Sep 20, 2026 • 09:15", amount: "-$20.00", status: "Completed", icon: "☁️" },
+      { type: "in",  title: "UI Design – Startup Landing", date: "Sep 15, 2026 • 16:48", amount: "+$2,800.00", status: "Completed", icon: "🎨" },
+      { type: "out", title: "Apple MacBook Pro M3", date: "Aug 28, 2026 • 11:20", amount: "-$2,499.00", status: "Completed", icon: "💻" },
+      { type: "in",  title: "Monthly Contract – Tech Agency", date: "Aug 15, 2026 • 08:00", amount: "+$8,500.00", status: "Completed", icon: "🏢" },
+      { type: "out", title: "Udemy – Advanced React Course", date: "Jul 30, 2026 • 19:45", amount: "-$299.00", status: "Completed", icon: "📚" },
+      { type: "in",  title: "App Revenue – Side Project", date: "Jul 12, 2026 • 12:10", amount: "+$1,240.00", status: "Completed", icon: "📱" },
+      { type: "out", title: "Namecheap Domains (x3)", date: "Jun 22, 2026 • 10:33", amount: "-$89.00", status: "Completed", icon: "🌐" },
+      { type: "in",  title: "Consulting – Fintech Startup", date: "May 08, 2026 • 15:00", amount: "+$6,000.00", status: "Completed", icon: "🚀" },
+      { type: "out", title: "Home Office Equipment", date: "Mar 18, 2026 • 14:22", amount: "-$1,850.00", status: "Completed", icon: "🪑" },
+      { type: "in",  title: "Year-End Performance Bonus", date: "Dec 28, 2025 • 09:00", amount: "+$12,000.00", status: "Completed", icon: "🎉" },
+      { type: "in",  title: "Project Milestone #3", date: "Nov 15, 2025 • 17:30", amount: "+$7,500.00", status: "Completed", icon: "📈" },
+      { type: "out", title: "DevFest Lagos Ticket + Travel", date: "Oct 05, 2025 • 13:15", amount: "-$350.00", status: "Completed", icon: "🎫" },
+      { type: "in",  title: "First Paid Client Project", date: "Aug 20, 2025 • 11:45", amount: "+$3,200.00", status: "Completed", icon: "✨" },
+    ];
+
+    const list = document.getElementById("txList");
+
+    function render(filter = "all") {
+      list.innerHTML = "";
+      const filtered = filter === "all" ? data : data.filter(t => t.type === filter);
+      
+      filtered.forEach((t, i) => {
+        const el = document.createElement("div");
+        el.className = "tx-item";
+        el.style.opacity = "0";
+        el.style.transform = "translateY(10px)";
+        el.innerHTML = `
+          <div class="tx-left">
+            <div class="tx-icon ${t.type}">${t.icon}</div>
+            <div class="tx-info">
+              <h4>${t.title}</h4>
+              <p>${t.date}</p>
+            </div>
+          </div>
+          <div class="tx-right">
+            <div class="tx-amount ${t.type}">${t.amount}</div>
+            <div class="tx-status">${t.status}</div>
+          </div>
+        `;
+        list.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "all 0.3s ease";
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        }, i * 40);
+      });
+    }
+
+    function filterTx(type, btn) {
+      document.querySelectorAll(".filter-tabs button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      render(type);
+    }
+
+    function toast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2500);
+    }
+
+    render();
+  </script>
+</body>
+</html>
