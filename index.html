@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+hi<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -236,5 +236,28 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDwHgoCMN11PY0HqQwUv-K9qMsWyeOFqpA",
+    authDomain: "prince-thaddeus-portfolio.firebaseapp.com",
+    projectId: "prince-thaddeus-portfolio",
+    storageBucket: "prince-thaddeus-portfolio.firebasestorage.app",
+    messagingSenderId: "1054378700729",
+    appId: "1:1054378700729:web:9a022b4aefd14afd301068",
+    measurementId: "G-BBTN7DDNLQ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  console.log("Firebase connected successfully!");
+</script>
 </body>
 </html>
